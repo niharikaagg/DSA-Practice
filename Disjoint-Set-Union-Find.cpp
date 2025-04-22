@@ -21,7 +21,7 @@ int find(int par[], int x) {
     if(par[x] == x)
         return x;
     
-    int parent = find(par, par[x]);
+    return find(par, par[x]);
 
 }
 
