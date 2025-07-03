@@ -50,8 +50,9 @@ class Solution {
         
         for(int i=0; i<n; i++)
             dp[i][0] = true;
-            
-        dp[0][arr[0]] = true;
+
+        if(arr[0] <= sum)
+            dp[0][arr[0]] = true;
         
         for(int i=1; i<n; i++)
         {
@@ -63,7 +64,7 @@ class Solution {
                 if(arr[i] <= j)
                     pick = dp[i-1][j-arr[i]];
                     
-                dp[i][j] = pick||notPick;
+                dp[i][j] = pick || notPick;
             }
         }
         
