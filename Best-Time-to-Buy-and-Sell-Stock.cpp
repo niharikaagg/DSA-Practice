@@ -13,15 +13,15 @@ Return the maximum profit you can achieve from this transaction. If you cannot a
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {
-        int min=prices[0], max_profit=0;
+        int minimum = prices[0], maxProfit = 0;
+
         for(int i=0; i<prices.size(); i++)
         {
-            int profit = prices[i]-min;
-            if(profit>max_profit)
-                max_profit=profit;
-            if(prices[i]<min)
-                min=prices[i];
+            int profit = prices[i] - minimum;
+            maxProfit = max(maxProfit, profit);
+            minimum = min(minimum, prices[i]);
         }
-        return max_profit;
+
+        return maxProfit;
     }
 };
