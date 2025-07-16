@@ -46,25 +46,6 @@ public:
 
 class Solution {
 public:
-    int func(int i, int n, int buy, vector<vector<int>> &dp, vector<int> &prices)
-    {
-        if(i == n)
-            return 0;
-
-        if(dp[i][buy] != -1)
-            return dp[i][buy];
-
-        int profit = 0;
-
-        // max of pick or not pick for buy as well as sell
-        if(buy)     // can buy (buy = 1)
-            profit = max((-prices[i] + func(i+1, n, 0, dp, prices)), (0 + func(i+1, n, 1, dp, prices)));
-        else        // can sell (buy = 0)
-            profit = max((prices[i] + func(i+1, n, 1, dp, prices)), (0 + func(i+1, n, 0, dp, prices)));
-
-        return dp[i][buy] = profit;
-    }
-
     int maxProfit(vector<int>& prices) {
         int n = prices.size();
 
