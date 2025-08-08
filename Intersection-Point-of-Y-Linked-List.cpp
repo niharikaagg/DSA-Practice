@@ -24,6 +24,9 @@ Note that the linked lists must retain their original structure after the functi
 class Solution {
 public:
     ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+        if(headA == NULL || headB == NULL)
+            return NULL;
+        
         ListNode* t1 = headA;
         ListNode* t2 = headB;
 
