@@ -28,13 +28,17 @@ public:
 
     int minEatingSpeed(vector<int>& piles, int h) {
         int largestPile = INT_MIN;
+        long long sum = 0;
 
         for(int i=0; i<piles.size(); i++)
         {
             largestPile = max(largestPile, piles[i]);
+            sum += piles[i];
         }
 
-        int s = 1, e = largestPile;
+        long long start = ceil((double)sum/(double)h);
+
+        int s = start, e = largestPile;
 
         while(s <= e)
         {
