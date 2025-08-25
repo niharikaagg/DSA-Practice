@@ -12,7 +12,7 @@ A subarray is a contiguous part of the array.
 
 class Solution {
 public:
-    int numberOfSubarrays(vector<int> &nums, int n, int k, int maxSum)
+    int numberOfSubarrays(vector<int> &nums, int k, int maxSum)
     {
         int subarrays = 1, sum = 0;
 
@@ -32,8 +32,6 @@ public:
     }
 
     int splitArray(vector<int>& nums, int k) {
-        int n = nums.size();
-
         int s = *max_element(nums.begin(), nums.end());
         int e = accumulate(nums.begin(), nums.end(), 0);
 
@@ -41,7 +39,7 @@ public:
         {
             int mid = s + (e-s)/2;
 
-            if(numberOfSubarrays(nums, n, k, mid) <= k)
+            if(numberOfSubarrays(nums, k, mid) <= k)
                 e = mid - 1;
             else
                 s = mid + 1;
