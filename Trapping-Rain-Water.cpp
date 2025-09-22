@@ -6,6 +6,36 @@ Given n non-negative integers representing an elevation map where the width of e
 
 
 
+// Optimal approach - O(1) space
+class Solution {
+public:
+    int trap(vector<int>& height) {
+        int n = height.size();
+        int l = 0, r = n-1, totalWater = 0;
+        int leftMax = height[l], rightMax = height[r];
+
+        while(l < r)
+        {
+            if(leftMax <= rightMax)
+            {
+                l += 1;
+                leftMax = max(leftMax, height[l]);
+                totalWater += leftMax - height[l];
+            }
+
+            else
+            {
+                r -= 1;
+                rightMax = max(rightMax, height[r]);
+                totalWater += rightMax - height[r];
+            }
+        }
+
+        return totalWater;
+    }
+};
+
+// O(N) or O(2N) space
 class Solution {
 public:
     int trap(vector<int>& height) {
